@@ -1,9 +1,4 @@
-import {
-	AlertCircleIcon,
-	EyeIcon,
-	ViewIcon,
-	ViewOffIcon,
-} from "hugeicons-react";
+import { AlertCircleIcon, ViewIcon, ViewOffIcon } from "hugeicons-react";
 import type React from "react";
 import { useState } from "react";
 
