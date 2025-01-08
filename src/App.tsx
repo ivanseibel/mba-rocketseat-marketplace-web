@@ -1,4 +1,5 @@
 import "./index.css";
+import { AvatarUpload } from "./components/avatar-upload";
 import { Button } from "./components/button";
 import { Input } from "./components/input";
 import { Link } from "./components/link";
@@ -7,6 +8,12 @@ import { Select } from "./components/select";
 export function App() {
 	return (
 		<div className="flex mt-10 flex-col justify-center items-center mx-auto w-96">
+			{/* Testing Avatar component */}
+			<div className="grid grid-cols-2 gap-4 mb-4">
+				<AvatarUpload src="https://github.com/ivanseibel.png" />
+				<AvatarUpload src={undefined} />
+			</div>
+
 			{/* Testing Input components */}
 			<Input
 				id="email"
