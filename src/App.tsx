@@ -3,44 +3,59 @@ import { AvatarUpload } from "./components/avatar-upload";
 import { Button } from "./components/button";
 import { Input } from "./components/input";
 import { Link } from "./components/link";
+import { ProductImageUpload } from "./components/product-image-upload";
 import { Select } from "./components/select";
 
 export function App() {
 	return (
-		<div className="flex mt-10 flex-col justify-center items-center mx-auto w-96">
-			{/* Testing Avatar component */}
+		<div className="flex mt-10 flex-col justify-center items-center mx-auto w-full">
+			{/* Testing Avatar Upload component */}
 			<div className="grid grid-cols-2 gap-4 mb-4">
-				<AvatarUpload src="https://github.com/ivanseibel.png" />
+				<AvatarUpload
+					src="https://github.com/ivanseibel.png"
+					onFileSelect={(file) => console.log("Selected file: ", file)}
+				/>
 				<AvatarUpload src={undefined} />
 			</div>
 
-			{/* Testing Input components */}
-			<Input
-				id="email"
-				label="Email"
-				type="email"
-				icon={"Mail02Icon"}
-				error="Invalid email"
-			/>
-			<Input
-				id="password"
-				label="Password"
-				type="password"
-				icon={"AccessIcon"}
-			/>
+			{/* Testing Product Upload component */}
+			<div className="grid grid-cols-2 gap-4 mb-4">
+				<ProductImageUpload
+					src="https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=3880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					onFileSelect={(file) => console.log("Selected file: ", file)}
+				/>
+				<ProductImageUpload src={undefined} />
+			</div>
 
-			{/* Testing Select components */}
-			<Select
-				id="select"
-				label="Select"
-				options={[
-					{ value: "1", label: "Option 1" },
-					{ value: "2", label: "Option 2" },
-					{ value: "3", label: "Option 3" },
-				]}
-				error="Select an option"
-				icon={"SaleTag02Icon"}
-			/>
+			{/* Testing Input components */}
+			<div className="grid grid-cols-1 gap-4">
+				<Input
+					id="email"
+					label="Email"
+					type="email"
+					icon={"Mail02Icon"}
+					error="Invalid email"
+				/>
+				<Input
+					id="password"
+					label="Password"
+					type="password"
+					icon={"AccessIcon"}
+				/>
+
+				{/* Testing Select components */}
+				<Select
+					id="select"
+					label="Select"
+					options={[
+						{ value: "1", label: "Option 1" },
+						{ value: "2", label: "Option 2" },
+						{ value: "3", label: "Option 3" },
+					]}
+					error="Select an option"
+					icon={"SaleTag02Icon"}
+				/>
+			</div>
 
 			{/* Testing Button components */}
 			<div className="grid grid-cols-2 gap-4 mt-5">
