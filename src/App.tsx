@@ -1,6 +1,7 @@
 import "./index.css";
 import { Button } from "./components/button";
 import { Input } from "./components/input";
+import { Link } from "./components/link";
 import { Select } from "./components/select";
 
 export function App() {
@@ -99,6 +100,22 @@ export function App() {
 					iconPosition="right"
 					size="sm"
 					variant="outline"
+				/>
+			</div>
+
+			{/* Testing Link component */}
+			<div className="mt-5 grid grid-cols-2 gap-4">
+				<Link
+					label="Placeholder"
+					to="/home"
+					icon="Mail02Icon"
+					iconPosition="left"
+				/>
+				<Link
+					label="Placeholder"
+					to="/home"
+					icon="Mail02Icon"
+					iconPosition="right"
 				/>
 			</div>
 		</div>
