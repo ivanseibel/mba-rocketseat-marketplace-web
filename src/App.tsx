@@ -1,6 +1,7 @@
 import "./index.css";
 import { AvatarUpload } from "./components/avatar-upload";
 import { Button } from "./components/button";
+import { CategoryTag } from "./components/category-tag";
 import { Input } from "./components/input";
 import { Link } from "./components/link";
 import { ProductImageUpload } from "./components/product-image-upload";
@@ -28,11 +29,12 @@ export function App() {
 				<ProductImageUpload src={undefined} />
 			</div>
 
-			{/* Testing tag component */}
+			{/* Testing tag components */}
 			<div className="flex gap-4 mb-4">
 				<StatusTag variant="published" />
 				<StatusTag variant="sold" />
 				<StatusTag variant="inactive" />
+				<CategoryTag label="furniture" />
 			</div>
 
 			{/* Testing Input components */}
