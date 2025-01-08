@@ -1,7 +1,6 @@
-import { AccessIcon, Mail02Icon, SaleTag02Icon } from "hugeicons-react";
-import { Input } from "./components/input";
 import "./index.css";
 import { Button } from "./components/button";
+import { Input } from "./components/input";
 import { Select } from "./components/select";
 
 export function App() {
@@ -12,14 +11,14 @@ export function App() {
 				id="email"
 				label="Email"
 				type="email"
-				icon={<Mail02Icon />}
+				icon={"Mail02Icon"}
 				error="Invalid email"
 			/>
 			<Input
 				id="password"
 				label="Password"
 				type="password"
-				icon={<AccessIcon />}
+				icon={"AccessIcon"}
 			/>
 
 			{/* Testing Select components */}
@@ -32,7 +31,7 @@ export function App() {
 					{ value: "3", label: "Option 3" },
 				]}
 				error="Select an option"
-				icon={<SaleTag02Icon />}
+				icon={"SaleTag02Icon"}
 			/>
 
 			{/* Testing Button components */}

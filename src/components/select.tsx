@@ -1,10 +1,5 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
-import {
-	AlertCircleIcon,
-	ArrowDown01Icon,
-	Cancel01Icon,
-	Tick02Icon,
-} from "hugeicons-react";
+import * as HugeIcons from "hugeicons-react";
 import { useState } from "react";
 
 interface SelectProps {
@@ -12,7 +7,8 @@ interface SelectProps {
 	placeholder?: string;
 	id: string;
 	options: { value: string; label: string }[];
-	icon?: React.ReactNode;
+	icon?: keyof typeof HugeIcons;
+	iconPosition?: "left" | "right";
 	error?: string;
 }
 
@@ -23,6 +19,7 @@ export function Select({
 	options,
 	error,
 	icon,
+	iconPosition = "left",
 }: SelectProps): JSX.Element {
 	const [isFocused, setIsFocused] = useState(false);
 	const [selectedValue, setSelectedValue] = useState<string | null>(null);
@@ -45,6 +42,8 @@ export function Select({
 		);
 		return selectedOption ? selectedOption.label : placeholder;
 	};
+
+	const IconComponent = icon ? (HugeIcons[icon] as React.ElementType) : null;
 
 	return (
 		<div className="flex flex-col mb-5 w-full">
@@ -74,7 +73,7 @@ export function Select({
 						onBlur={handleBlur}
 					>
 						{/* Optional icon on the left side of the input */}
-						{icon && (
+						{IconComponent && iconPosition !== "right" && (
 							<div
 								className={`absolute left-0 pl-0 ${
 									isFocused || selectedValue
@@ -82,7 +81,7 @@ export function Select({
 										: "text-gray-300"
 								}`}
 							>
-								{icon}
+								<IconComponent />
 							</div>
 						)}
 
@@ -95,7 +94,7 @@ export function Select({
 
 						{/* Dropdown arrow icon */}
 						<SelectPrimitive.Icon>
-							<ArrowDown01Icon />
+							<HugeIcons.ArrowDown01Icon />
 						</SelectPrimitive.Icon>
 					</SelectPrimitive.Trigger>
 
@@ -107,7 +106,7 @@ export function Select({
 							className="absolute leading-none right-9 top-1/2 px-1 bg-shape rounded-full transform -translate-y-1/2 text-gray-300 hover:text-gray-500"
 							aria-label="Clear selection"
 						>
-							<Cancel01Icon width={16} />
+							<HugeIcons.Cancel01Icon width={16} />
 						</button>
 					)}
 
@@ -127,7 +126,7 @@ export function Select({
 
 									{/* Checkmark for selected item */}
 									<SelectPrimitive.ItemIndicator>
-										<Tick02Icon />
+										<HugeIcons.Tick02Icon />
 									</SelectPrimitive.ItemIndicator>
 								</SelectPrimitive.Item>
 							))}
@@ -139,7 +138,7 @@ export function Select({
 			{/* Error message display */}
 			{error && (
 				<div className="flex items-center mt-2 body-xs text-danger">
-					<AlertCircleIcon className="w-4 h-4 mr-1" />
+					<HugeIcons.AlertCircleIcon className="w-4 h-4 mr-1" />
 					{error}
 				</div>
 			)}

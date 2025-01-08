@@ -1,4 +1,4 @@
-import { AlertCircleIcon, ViewIcon, ViewOffIcon } from "hugeicons-react";
+import * as HugeIcons from "hugeicons-react";
 import type React from "react";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ interface InputProps {
 	placeholder?: string;
 	id: string;
 	type: string;
-	icon?: React.ReactNode;
+	icon?: keyof typeof HugeIcons;
 	error?: string;
 }
 
@@ -35,6 +35,8 @@ export function Input({
 		setIsFocused(false);
 	};
 
+	const IconComponent = icon ? (HugeIcons[icon] as React.ElementType) : null;
+
 	return (
 		<div className="flex flex-col mb-5 w-full">
 			<label
@@ -46,13 +48,13 @@ export function Input({
 				{label}
 			</label>
 			<div className="relative flex items-center">
-				{icon && (
+				{IconComponent && (
 					<div
 						className={`absolute left-0 pl-0 ${
 							isFocused || isFilled ? "text-orange-base" : "text-gray-300"
 						}`}
 					>
-						{icon}
+						<IconComponent />
 					</div>
 				)}
 				<input
@@ -69,16 +71,18 @@ export function Input({
 				{type === "password" && (
 					// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 					<div
-						className={`absolute right-0 pr-3 cursor-pointer ${isFocused ? "text-orange-base" : "text-gray-300"}`}
+						className={`absolute right-0 pr-3 cursor-pointer ${
+							isFocused ? "text-orange-base" : "text-gray-300"
+						}`}
 						onClick={togglePasswordVisibility}
 					>
-						{showPassword ? <ViewOffIcon /> : <ViewIcon />}
+						{showPassword ? <HugeIcons.ViewOffIcon /> : <HugeIcons.ViewIcon />}
 					</div>
 				)}
 			</div>
 			{error && (
 				<div className="flex items-center mt-2 body-xs text-danger">
-					<AlertCircleIcon className="w-4 h-4 mr-1" />
+					<HugeIcons.AlertCircleIcon className="w-4 h-4 mr-1" />
 					{error}
 				</div>
 			)}
