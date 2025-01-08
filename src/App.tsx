@@ -4,6 +4,7 @@ import { Button } from "./components/button";
 import { CategoryTag } from "./components/category-tag";
 import { Input } from "./components/input";
 import { Link } from "./components/link";
+import { ProductCard } from "./components/product-card";
 import { ProductImageUpload } from "./components/product-image-upload";
 import { Select } from "./components/select";
 import { StatusTag } from "./components/status-tag";
@@ -18,6 +19,18 @@ export function App() {
 					onFileSelect={(file) => console.log("Selected file: ", file)}
 				/>
 				<AvatarUpload src={undefined} />
+			</div>
+
+			{/* Testing Product Card */}
+			<div className="mb-4">
+				<ProductCard
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac urna eget nunc ultricies fermentum. Nullam auctor, nunc nec ultricies fermentum, nunc."
+					imageUrl="https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=3880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					status="published"
+					price={150}
+					category="furniture"
+					title="Lorem Ipsum"
+				/>
 			</div>
 
 			{/* Testing Product Upload component */}
