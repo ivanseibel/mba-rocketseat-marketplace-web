@@ -5,6 +5,7 @@ import { Input } from "./components/input";
 import { Link } from "./components/link";
 import { ProductImageUpload } from "./components/product-image-upload";
 import { Select } from "./components/select";
+import { StatusTag } from "./components/status-tag";
 
 export function App() {
 	return (
@@ -25,6 +26,13 @@ export function App() {
 					onFileSelect={(file) => console.log("Selected file: ", file)}
 				/>
 				<ProductImageUpload src={undefined} />
+			</div>
+
+			{/* Testing tag component */}
+			<div className="flex gap-4 mb-4">
+				<StatusTag variant="published" />
+				<StatusTag variant="sold" />
+				<StatusTag variant="inactive" />
 			</div>
 
 			{/* Testing Input components */}
