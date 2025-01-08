@@ -1,6 +1,7 @@
 import { AccessIcon, Mail02Icon, SaleTag02Icon } from "hugeicons-react";
 import { Input } from "./components/input";
 import "./index.css";
+import { Button } from "./components/button";
 import { Select } from "./components/select";
 
 export function App() {
@@ -33,6 +34,74 @@ export function App() {
 				error="Select an option"
 				icon={<SaleTag02Icon />}
 			/>
+
+			{/* Testing Button components */}
+			<div className="grid grid-cols-2 gap-4 mt-5">
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"Mail02Icon"}
+					iconPosition="left"
+					size="md"
+					variant="solid"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"ArrowRight02Icon"}
+					iconPosition="right"
+					size="md"
+					variant="solid"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"PlusSignIcon"}
+					iconPosition="left"
+					size="md"
+					variant="outline"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"ArrowRight02Icon"}
+					iconPosition="right"
+					size="md"
+					variant="outline"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"PlusSignIcon"}
+					iconPosition="left"
+					size="sm"
+					variant="solid"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"ArrowRight02Icon"}
+					iconPosition="right"
+					size="sm"
+					variant="solid"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"PlusSignIcon"}
+					iconPosition="left"
+					size="sm"
+					variant="outline"
+				/>
+				<Button
+					label="Placeholder"
+					onClick={() => alert("Button clicked")}
+					icon={"ArrowRight02Icon"}
+					iconPosition="right"
+					size="sm"
+					variant="outline"
+				/>
+			</div>
 		</div>
 	);
 }
