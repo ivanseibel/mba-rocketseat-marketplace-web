@@ -8,17 +8,19 @@ import { ProductCard } from "./components/product-card";
 import { ProductImageUpload } from "./components/product-image-upload";
 import { Select } from "./components/select";
 import { StatusTag } from "./components/status-tag";
+import { User } from "./components/user";
 
 export function App() {
 	return (
 		<div className="flex mt-10 flex-col justify-center items-center mx-auto w-full">
-			{/* Testing Avatar Upload component */}
-			<div className="grid grid-cols-2 gap-4 mb-4">
+			{/* Testing Avatar Upload and User components */}
+			<div className="grid grid-cols-3 gap-4 mb-4">
 				<AvatarUpload
 					src="https://github.com/ivanseibel.png"
 					onFileSelect={(file) => console.log("Selected file: ", file)}
 				/>
 				<AvatarUpload src={undefined} />
+				<User />
 			</div>
 
 			{/* Testing Product Card */}
