@@ -5,7 +5,7 @@ import { Logout01Icon } from "hugeicons-react";
 
 export function User() {
 	return (
-		<div>
+		<div className="flex">
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger asChild className="inline-flex items-center">
 					<button type="button">
