@@ -33,7 +33,9 @@ export function User() {
 										className="object-cover"
 									/>
 								</Avatar.Root>
-								<p className="body-xs text-gray-300">Brandon Ekstrom</p>
+								<p className="body-xs text-gray-300 text-pretty flex-1">
+									Ivan Luis Seibel
+								</p>
 							</div>
 
 							<Separator.Root

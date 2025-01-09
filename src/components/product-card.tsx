@@ -42,7 +42,7 @@ export function ProductCard({
 					</div>
 				</div>
 				<div>
-					<p className="body-sm text-gray-300 overflow-hidden text-ellipsis line-clamp-2">
+					<p className="body-sm text-gray-300 overflow-hidden text-pretty line-clamp-2">
 						{description}
 					</p>
 				</div>
