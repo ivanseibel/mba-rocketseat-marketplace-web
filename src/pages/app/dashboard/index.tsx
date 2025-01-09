@@ -15,7 +15,7 @@ export function Dashboard() {
 		<div className="flex mt-10 flex-col justify-center items-center mx-auto w-full">
 			{/* Testing Nav Link component */}
 			<div
-				className="grid grid-cols-3 gap-4 mb-4"
+				className="grid grid-cols-4 gap-4 mb-4"
 				style={{ width: "fit-content" }}
 			>
 				<NavLink to={"/"} icon="MailAccount01Icon">
@@ -27,16 +27,16 @@ export function Dashboard() {
 				<NavLink to={"/settings"} icon="MailAccount01Icon">
 					Settings
 				</NavLink>
+				<User />
 			</div>
 
 			{/* Testing Avatar Upload and User components */}
-			<div className="grid grid-cols-3 gap-4 mb-4">
+			<div className="grid grid-cols-2 gap-4 mb-4">
 				<AvatarUpload
 					src="https://github.com/ivanseibel.png"
 					onFileSelect={(file) => console.log("Selected file: ", file)}
 				/>
 				<AvatarUpload src={undefined} />
-				<User />
 			</div>
 
 			{/* Testing Product Card */}
