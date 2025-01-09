@@ -19,7 +19,7 @@ export function Button({
 }: ButtonProps): JSX.Element {
 	// Define size-based classes for padding, font size, and height
 	const sizeClasses =
-		size === "sm" ? "px-2 text-sm h-10" : "px-4 text-base h-14";
+		size === "sm" ? "px-4 text-sm h-10" : "px-4 text-base h-14";
 
 	// Define variant-based classes for styles (solid or outline)
 	const variantClasses =
@@ -36,7 +36,7 @@ export function Button({
 	return (
 		<button
 			type="button"
-			className={`flex items-center gap-3 justify-center ${sizeClasses} ${variantClasses} rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50`}
+			className={`flex items-center gap-2 justify-center ${sizeClasses} ${variantClasses} rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50`}
 			onClick={onClick}
 		>
 			{/* Render icon on the left if specified */}
