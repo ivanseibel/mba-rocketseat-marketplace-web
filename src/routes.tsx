@@ -5,6 +5,7 @@ import { Dashboard } from "./pages/app/dashboard";
 import { Products } from "./pages/app/dashboard/products";
 import { SignIn } from "./pages/auth/sign-in";
 import { ErrorPage } from "./pages/error";
+import { NotFound } from "./pages/not-found";
 
 export const router = createBrowserRouter([
 	{
@@ -34,6 +35,6 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "*",
-		element: <div>Not found</div>,
+		element: <NotFound />,
 	},
 ]);
