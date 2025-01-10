@@ -1,5 +1,6 @@
 import { SaleTag02Icon, Store04Icon, UserMultipleIcon } from "hugeicons-react";
 import { Helmet } from "react-helmet-async";
+import { VisitorsChart } from "./visitors-chart";
 
 export function Dashboard() {
 	return (
@@ -43,7 +44,7 @@ export function Dashboard() {
 						</div>
 					</div>
 					<div className="flex border bg-white rounded-[20px] flex-1">
-						Chart
+						<VisitorsChart />
 					</div>
 				</section>
 			</div>
