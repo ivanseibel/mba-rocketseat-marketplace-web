@@ -7,12 +7,12 @@ export function Dashboard() {
 			<Helmet>
 				<title>Dashboard</title>
 			</Helmet>
-			<div>
+			<div className="flex flex-col gap-10 py-10 px-32">
 				<section className="flex flex-col gap-2 mt-16">
 					<h1 className="title-md">Last 30 days</h1>
 					<p className="body-sm">Check the last 30 days of your sales</p>
 				</section>
-				<section className="flex gap-4 mt-10">
+				<section className="flex gap-4">
 					<div className="grid grid-rows-3 gap-4 w-60">
 						<div className="flex items-center justify-between gap-2 pr-7 pl-3 py-3 bg-white rounded-[20px]">
 							<div className="flex items-center justify-center h-[86px] w-20 text-blue-dark bg-blue-light rounded-xl">
