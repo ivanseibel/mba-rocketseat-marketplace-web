@@ -21,7 +21,7 @@ export function Dashboard() {
 							</div>
 							<div className="flex flex-1 flex-col gap-2">
 								<h2 className="title-lg">24</h2>
-								<p className="body-xs text-pretty">Sold products</p>
+								<p className="body-xs text-pretty">Products sold</p>
 							</div>
 						</div>
 						<div className="flex items-center justify-between gap-2 pr-7 pl-3 py-3 bg-white rounded-[20px]">
@@ -39,7 +39,7 @@ export function Dashboard() {
 							</div>
 							<div className="flex flex-1 flex-col gap-2">
 								<h2 className="title-lg">1.238</h2>
-								<p className="body-xs text-pretty">Visitors</p>
+								<p className="body-xs text-pretty">Total visitors</p>
 							</div>
 						</div>
 					</div>
