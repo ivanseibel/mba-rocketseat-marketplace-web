@@ -3,7 +3,7 @@ import type React from "react";
 import { useState } from "react";
 
 interface InputProps {
-	label: string;
+	label?: string;
 	placeholder?: string;
 	id: string;
 	type: string;
@@ -39,14 +39,16 @@ export function Input({
 
 	return (
 		<div className="flex flex-col mb-5 w-full">
-			<label
-				htmlFor={id}
-				className={`label-md uppercase ${
-					isFocused ? "text-orange-base" : "text-gray-300"
-				}`}
-			>
-				{label}
-			</label>
+			{label && (
+				<label
+					htmlFor={id}
+					className={`label-md uppercase ${
+						isFocused ? "text-orange-base" : "text-gray-300"
+					}`}
+				>
+					{label}
+				</label>
+			)}
 			<div className="relative flex items-center">
 				{IconComponent && (
 					<div
