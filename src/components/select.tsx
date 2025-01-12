@@ -3,7 +3,7 @@ import * as HugeIcons from "hugeicons-react";
 import { useState } from "react";
 
 interface SelectProps {
-	label: string;
+	label?: string;
 	placeholder?: string;
 	id: string;
 	options: { value: string; label: string }[];
@@ -48,14 +48,16 @@ export function Select({
 	return (
 		<div className="flex flex-col mb-5 w-full">
 			{/* Label for the select input */}
-			<label
-				htmlFor={id}
-				className={`label-md uppercase ${
-					isFocused ? "text-orange-base" : "text-gray-300"
-				}`}
-			>
-				{label}
-			</label>
+			{label && (
+				<label
+					htmlFor={id}
+					className={`label-md uppercase ${
+						isFocused ? "text-orange-base" : "text-gray-300"
+					}`}
+				>
+					{label}
+				</label>
+			)}
 
 			{/* Radix Select Root */}
 			<SelectPrimitive.Root
@@ -67,7 +69,7 @@ export function Select({
 					<SelectPrimitive.Trigger
 						id={id}
 						className={`relative flex w-full px-3 py-2 justify-between border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-							isFocused || selectedValue ? "text-orange-base" : "text-gray-300"
+							isFocused ? "text-orange-base" : "text-gray-300"
 						}`}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
@@ -86,9 +88,13 @@ export function Select({
 						)}
 
 						{/* Display the selected value or placeholder */}
-						<div className="flex items-center w-full pl-4">
+						<div className="flex items-center w-full pl-7">
 							<SelectPrimitive.Value placeholder={placeholder}>
-								{getSelectedLabel()}
+								<span
+									className={`${getSelectedLabel() === placeholder && "text-gray-200"}`}
+								>
+									{getSelectedLabel()}
+								</span>
 							</SelectPrimitive.Value>
 						</div>
 
