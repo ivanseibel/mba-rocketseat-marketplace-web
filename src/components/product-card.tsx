@@ -1,7 +1,8 @@
 import { CategoryTag } from "./category-tag";
 import { StatusTag } from "./status-tag";
 
-interface ProductCardProps {
+export interface ProductCardProps {
+	id?: string;
 	imageUrl: string;
 	title: string;
 	description: string;
@@ -19,10 +20,10 @@ export function ProductCard({
 	category,
 }: ProductCardProps) {
 	return (
-		<div className="max-w-sm transition-all duration-200 w-80 p-1 rounded-[20px] border-2 border-white hover:border-2 hover:border-blue-base">
+		<div className="max-w-sm max-h-60 transition-all duration-200 p-1 rounded-[20px] border-2 border-white bg-white hover:border-2 hover:border-blue-base">
 			<div className="relative">
 				<img
-					className="w-full rounded-[20px] h-36 object-cover"
+					className="w-full rounded-[20px] h-32 object-cover"
 					src={imageUrl}
 					alt={title}
 				/>
@@ -32,7 +33,7 @@ export function ProductCard({
 				</div>
 			</div>
 			<div className="p-3">
-				<div className="flex justify-between items-center mt-2">
+				<div className="flex justify-between items-center">
 					<h3 className="subtitle text-gray-400">{title}</h3>
 					<div className="flex items-baseline gap-1">
 						<span className="label-md text-gray-500">$</span>
