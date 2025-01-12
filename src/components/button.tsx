@@ -4,7 +4,7 @@ interface ButtonProps {
 	label: string;
 	size?: "sm" | "md";
 	variant?: "solid" | "outline";
-	icon: keyof typeof HugeIcons;
+	icon?: keyof typeof HugeIcons;
 	iconPosition?: "left" | "right";
 	onClick?: () => void;
 }
