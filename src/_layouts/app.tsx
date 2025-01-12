@@ -5,7 +5,7 @@ import { User } from "../components/user";
 
 export function AppLayout() {
 	return (
-		<div className="h-screen bg-background">
+		<div className="min-h-screen bg-background">
 			<div className="flex flex-col h-full w-full max-w-7xl mx-auto">
 				<header className="flex items-center justify-between shadow-sm max-h-20 min-h-20">
 					<div className="flex items-center gap-4">
