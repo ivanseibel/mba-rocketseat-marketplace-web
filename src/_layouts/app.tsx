@@ -1,16 +1,22 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
 import { NavLink } from "../components/nav-link";
 import { User } from "../components/user";
 
 export function AppLayout() {
+	const navigate = useNavigate();
+
+	function handleNewProduct() {
+		navigate("/product/create");
+	}
+
 	return (
 		<div className="min-h-screen bg-background">
 			<div className="flex flex-col h-full w-full max-w-7xl mx-auto">
 				<header className="flex items-center justify-between shadow-sm max-h-20 min-h-20">
 					<div className="flex items-center gap-4">
 						<Link to={"/"}>
-							<img src="logo.svg" height={40} width={56} alt="" />
+							<img src="/logo.svg" height={40} width={56} alt="" />
 						</Link>
 					</div>
 					<nav className="flex gap-4 flex-1 justify-center">
@@ -28,7 +34,7 @@ export function AppLayout() {
 							iconPosition="left"
 							size="sm"
 							variant="solid"
-							onClick={() => {}}
+							onClick={handleNewProduct}
 						/>
 						<User />
 					</div>
