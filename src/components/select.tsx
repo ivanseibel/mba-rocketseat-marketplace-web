@@ -8,7 +8,6 @@ interface SelectProps {
 	id: string;
 	options: { value: string; label: string }[];
 	icon?: keyof typeof HugeIcons;
-	iconPosition?: "left" | "right";
 	error?: string;
 }
 
@@ -19,7 +18,6 @@ export function Select({
 	options,
 	error,
 	icon,
-	iconPosition = "left",
 }: SelectProps): JSX.Element {
 	const [isFocused, setIsFocused] = useState(false);
 	const [selectedValue, setSelectedValue] = useState<string | null>(null);
@@ -75,7 +73,7 @@ export function Select({
 						onBlur={handleBlur}
 					>
 						{/* Optional icon on the left side of the input */}
-						{IconComponent && iconPosition !== "right" && (
+						{IconComponent && (
 							<div
 								className={`absolute left-0 pl-0 ${
 									isFocused || selectedValue
@@ -88,13 +86,11 @@ export function Select({
 						)}
 
 						{/* Display the selected value or placeholder */}
-						<div className="flex items-center w-full pl-7">
+						<div
+							className={`flex items-center w-full ${icon ? "pl-7" : ""} ${selectedValue === null && "text-gray-200"}`}
+						>
 							<SelectPrimitive.Value placeholder={placeholder}>
-								<span
-									className={`${getSelectedLabel() === placeholder && "text-gray-200"}`}
-								>
-									{getSelectedLabel()}
-								</span>
+								{getSelectedLabel()}
 							</SelectPrimitive.Value>
 						</div>
 
