@@ -36,7 +36,7 @@ export function Button({
 	return (
 		<button
 			type="button"
-			className={`flex items-center gap-2 justify-center ${sizeClasses} ${variantClasses} rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50`}
+			className={`flex w-full items-center gap-2 justify-center ${sizeClasses} ${variantClasses} rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50`}
 			onClick={onClick}
 		>
 			{/* Render icon on the left if specified */}
