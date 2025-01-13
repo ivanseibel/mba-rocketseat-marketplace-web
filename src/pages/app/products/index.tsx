@@ -78,7 +78,7 @@ export function Products() {
 	return (
 		<>
 			<Helmet>
-				<title>Dashboard</title>
+				<title>Products</title>
 			</Helmet>
 			<div className="flex flex-col gap-10 px-32 p-4">
 				<section className="flex flex-col gap-2">
@@ -93,6 +93,7 @@ export function Products() {
 						<div className="grid grid-cols-2 gap-4">
 							{productData.map((product) => (
 								<ProductCard
+									id={product.id}
 									key={product.id}
 									imageUrl={product.imageUrl}
 									title={product.title}
