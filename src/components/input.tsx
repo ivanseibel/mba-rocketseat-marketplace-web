@@ -1,12 +1,13 @@
 import * as HugeIcons from "hugeicons-react";
 import type React from "react";
 import { useState } from "react";
+import { NumericFormat } from "react-number-format";
 
 interface InputProps {
 	label?: string;
 	placeholder?: string;
 	id: string;
-	type: string;
+	type: "text" | "password" | "number";
 	icon?: keyof typeof HugeIcons;
 	error?: string;
 }
@@ -59,27 +60,79 @@ export function Input({
 						<IconComponent />
 					</div>
 				)}
-				<input
-					placeholder={placeholder}
-					type={type === "password" && showPassword ? "text" : type}
-					id={id}
-					className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-						icon ? "pl-10" : ""
-					} ${type === "password" ? "pr-10" : ""}`}
-					onFocus={handleFocus}
-					onBlur={handleBlur}
-					onChange={(e) => setIsFilled(e.target.value.length > 0)}
-				/>
-				{type === "password" && (
-					// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-					<div
-						className={`absolute right-0 pr-3 cursor-pointer ${
-							isFocused ? "text-orange-base" : "text-gray-300"
+
+				{/* {type === "number" && (
+					<input
+						placeholder={placeholder}
+						type={type}
+						id={id}
+						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
+							icon ? "pl-10" : ""
 						}`}
-						onClick={togglePasswordVisibility}
-					>
-						{showPassword ? <HugeIcons.ViewOffIcon /> : <HugeIcons.ViewIcon />}
-					</div>
+						onFocus={handleFocus}
+						onBlur={handleBlur}
+						onChange={(e) => setIsFilled(e.target.value.length > 0)}
+					/>
+				)} */}
+
+				{type === "text" && (
+					<input
+						placeholder={placeholder}
+						type={type}
+						id={id}
+						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
+							icon ? "pl-10" : ""
+						}`}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
+						onChange={(e) => setIsFilled(e.target.value.length > 0)}
+					/>
+				)}
+
+				{type === "password" && (
+					<>
+						<input
+							placeholder={placeholder}
+							type={showPassword ? "text" : type}
+							id={id}
+							className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
+								icon ? "pl-10" : ""
+							} ${type === "password" ? "pr-10" : ""}`}
+							onFocus={handleFocus}
+							onBlur={handleBlur}
+							onChange={(e) => setIsFilled(e.target.value.length > 0)}
+						/>
+						{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+						<div
+							className={`absolute right-0 pr-3 cursor-pointer ${
+								isFocused ? "text-orange-base" : "text-gray-300"
+							}`}
+							onClick={togglePasswordVisibility}
+						>
+							{showPassword ? (
+								<HugeIcons.ViewOffIcon />
+							) : (
+								<HugeIcons.ViewIcon />
+							)}
+						</div>
+					</>
+				)}
+
+				{type === "number" && (
+					<NumericFormat
+						placeholder={placeholder}
+						id={id}
+						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
+							icon ? "pl-10" : ""
+						}`}
+						onFocus={handleFocus}
+						onBlur={handleBlur}
+						onChange={(e) => setIsFilled(e.target.value.length > 0)}
+						allowNegative={false}
+						prefix="$ "
+						decimalScale={2}
+						fixedDecimalScale={true}
+					/>
 				)}
 			</div>
 			{error && (
