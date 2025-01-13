@@ -25,7 +25,6 @@ export function Filters() {
 					error=""
 					id="status"
 					icon="SaleTag02Icon"
-					iconPosition="left"
 					placeholder="Select a status"
 				/>
 

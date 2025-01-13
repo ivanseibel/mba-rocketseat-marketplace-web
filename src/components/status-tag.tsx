@@ -1,21 +1,10 @@
+import { cn } from "../lib/utils";
+
 interface TagProps {
 	variant: "published" | "sold" | "inactive";
 }
 
 export function StatusTag({ variant }: TagProps): JSX.Element {
-	const getTagColor = (variant: string) => {
-		switch (variant) {
-			case "published":
-				return "bg-blue-dark text-white";
-			case "sold":
-				return "bg-success text-white";
-			case "inactive":
-				return "bg-gray-300 text-white";
-			default:
-				return "bg-gray-300 text-white";
-		}
-	};
-
 	const getTagText = (variant: string) => {
 		switch (variant) {
 			case "published":
@@ -29,13 +18,16 @@ export function StatusTag({ variant }: TagProps): JSX.Element {
 		}
 	};
 
+	const classes = cn(
+		"rounded-full px-2 py-1 font-medium text-[10px] uppercase",
+		variant === "published" && "bg-blue-dark text-white",
+		variant === "sold" && "bg-success text-white",
+		variant === "inactive" && "bg-gray-300 text-white",
+	);
+
 	return (
 		<div className="flex items-center">
-			<div
-				className={`rounded-full px-2 py-1 font-medium text-[10px] uppercase ${getTagColor(variant)}`}
-			>
-				{getTagText(variant)}
-			</div>
+			<div className={classes}>{getTagText(variant)}</div>
 		</div>
 	);
 }

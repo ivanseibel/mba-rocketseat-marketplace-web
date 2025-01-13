@@ -2,6 +2,7 @@ import * as HugeIcons from "hugeicons-react";
 import type React from "react";
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
+import { cn } from "../lib/utils";
 
 interface InputProps {
 	label?: string;
@@ -39,13 +40,14 @@ export function Input({
 	const IconComponent = icon ? (HugeIcons[icon] as React.ElementType) : null;
 
 	return (
-		<div className="flex flex-col mb-5 w-full">
+		<div className={cn("flex flex-col mb-5 w-full")}>
 			{label && (
 				<label
 					htmlFor={id}
-					className={`label-md uppercase ${
-						isFocused ? "text-orange-base" : "text-gray-300"
-					}`}
+					className={cn(
+						"label-md uppercase",
+						isFocused ? "text-orange-base" : "text-gray-300",
+					)}
 				>
 					{label}
 				</label>
@@ -53,36 +55,24 @@ export function Input({
 			<div className="relative flex items-center">
 				{IconComponent && (
 					<div
-						className={`absolute left-0 pl-0 ${
-							isFocused || isFilled ? "text-orange-base" : "text-gray-300"
-						}`}
+						className={cn(
+							"absolute left-0 pl-0",
+							isFocused || isFilled ? "text-orange-base" : "text-gray-300",
+						)}
 					>
 						<IconComponent />
 					</div>
 				)}
-
-				{/* {type === "number" && (
-					<input
-						placeholder={placeholder}
-						type={type}
-						id={id}
-						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-							icon ? "pl-10" : ""
-						}`}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						onChange={(e) => setIsFilled(e.target.value.length > 0)}
-					/>
-				)} */}
 
 				{type === "text" && (
 					<input
 						placeholder={placeholder}
 						type={type}
 						id={id}
-						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-							icon ? "pl-10" : ""
-						}`}
+						className={cn(
+							"w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200",
+							icon && "pl-10",
+						)}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
 						onChange={(e) => setIsFilled(e.target.value.length > 0)}
@@ -95,18 +85,21 @@ export function Input({
 							placeholder={placeholder}
 							type={showPassword ? "text" : type}
 							id={id}
-							className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-								icon ? "pl-10" : ""
-							} ${type === "password" ? "pr-10" : ""}`}
+							className={cn(
+								"w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200",
+								icon && "pl-10",
+								"pr-10",
+							)}
 							onFocus={handleFocus}
 							onBlur={handleBlur}
 							onChange={(e) => setIsFilled(e.target.value.length > 0)}
 						/>
 						{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
 						<div
-							className={`absolute right-0 pr-3 cursor-pointer ${
-								isFocused ? "text-orange-base" : "text-gray-300"
-							}`}
+							className={cn(
+								"absolute right-0 pr-3 cursor-pointer",
+								isFocused ? "text-orange-base" : "text-gray-300",
+							)}
 							onClick={togglePasswordVisibility}
 						>
 							{showPassword ? (
@@ -122,9 +115,10 @@ export function Input({
 					<NumericFormat
 						placeholder={placeholder}
 						id={id}
-						className={`w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200 ${
-							icon ? "pl-10" : ""
-						}`}
+						className={cn(
+							"w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200",
+							icon && "pl-10",
+						)}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
 						onChange={(e) => setIsFilled(e.target.value.length > 0)}
