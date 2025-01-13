@@ -27,7 +27,7 @@ export function ProductImageUpload({ src, onFileSelect }: ProductImageProps) {
 
 	return (
 		<RadixAvatar.Root
-			className="relative w-[415px] h-[340px] rounded-xl overflow-hidden bg-shape flex items-center justify-center cursor-pointer group"
+			className="relative flex justify-center items-center bg-shape rounded-xl w-[415px] h-[340px] cursor-pointer overflow-hidden group"
 			onClick={handleClick}
 		>
 			<input
@@ -41,15 +41,15 @@ export function ProductImageUpload({ src, onFileSelect }: ProductImageProps) {
 				<RadixAvatar.Image
 					src={finalSrc}
 					alt="product image"
-					className="w-full h-full object-cover transition-all duration-200 ease-in-out group-hover:brightness-50"
+					className="group-hover:brightness-50 w-full h-full transition-all duration-200 ease-in-out object-cover"
 				/>
 			)}
 			{finalSrc && (
-				<div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100">
-					<div className="flex flex-col gap-3 items-center justify-center w-full h-full bg-black bg-opacity-50 rounded-xl">
+				<div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none ease-in-out">
+					<div className="flex flex-col justify-center items-center gap-3 bg-black bg-opacity-50 rounded-xl w-full h-full">
 						<ImageUploadIcon className="w-6 h-6 text-white" />
 						<p
-							className="text-white text-opacity-70 text-sm font-medium text-center"
+							className="font-medium text-center text-sm text-white text-opacity-70"
 							style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
 						>
 							Click to upload
@@ -58,7 +58,7 @@ export function ProductImageUpload({ src, onFileSelect }: ProductImageProps) {
 					</div>
 				</div>
 			)}
-			<RadixAvatar.Fallback className="flex items-center justify-center w-full h-full">
+			<RadixAvatar.Fallback className="flex justify-center items-center w-full h-full">
 				<ImageUploadIcon className="w-6 h-6 text-orange-dark" />
 			</RadixAvatar.Fallback>
 		</RadixAvatar.Root>

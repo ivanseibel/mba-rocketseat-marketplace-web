@@ -20,7 +20,7 @@ export function Link({
 	return (
 		<RouterLink
 			to={to}
-			className="p-[2px] justify-between w-full text-sm font-medium text-orange-base hover:text-orange-dark flex items-center gap-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50"
+			className="flex justify-between items-center gap-2 focus:ring-opacity-50 p-[2px] focus:ring-2 focus:ring-orange-base w-full font-medium text-orange-base text-sm hover:text-orange-dark transition-colors duration-200 focus:outline-none"
 		>
 			{icon && iconPosition === "left" && (
 				<span className="mr-2">

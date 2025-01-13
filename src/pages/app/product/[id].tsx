@@ -26,8 +26,8 @@ export function ProductForm() {
 					<aside className="flex items-start self-start">
 						<ProductImageUpload />
 					</aside>
-					<form className="flex flex-col flex-1 items-start p-6 gap-6 rounded-[20px] bg-white">
-						<h3 className="title-sm text-gray-300 w-full">Product details</h3>
+					<form className="flex flex-col flex-1 items-start gap-6 bg-white p-6 rounded-[20px]">
+						<h3 className="w-full text-gray-300 title-sm">Product details</h3>
 						<div className="flex gap-6 w-full">
 							<Input
 								id="title"

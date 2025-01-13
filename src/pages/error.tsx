@@ -9,11 +9,11 @@ export function ErrorPage() {
 			<Helmet>
 				<title>Error</title>
 			</Helmet>
-			<div className="flex h-screen flex-col items-center justify-center gap-2">
+			<div className="flex flex-col justify-center items-center gap-2 h-screen">
 				<h1 className="font-bold text-4xl">
 					Oops! Looks like we dropped the dough! 🍕
 				</h1>
-				<div className="my-4 flex flex-col items-center gap-2">
+				<div className="flex flex-col items-center gap-2 my-4">
 					<p className="text-accent-foreground">
 						Something went wrong, and this page isn’t serving up what you
 						ordered. We promise it’s not burnt, just… misplaced.

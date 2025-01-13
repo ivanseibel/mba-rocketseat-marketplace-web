@@ -11,15 +11,15 @@ export function AppLayout() {
 	}
 
 	return (
-		<div className="min-h-screen bg-background">
-			<div className="flex flex-col h-full w-full max-w-7xl mx-auto">
-				<header className="flex items-center justify-between shadow-sm max-h-20 min-h-20">
+		<div className="bg-background min-h-screen">
+			<div className="flex flex-col mx-auto w-full max-w-7xl h-full">
+				<header className="flex justify-between items-center shadow-sm min-h-20 max-h-20">
 					<div className="flex items-center gap-4">
 						<Link to={"/"}>
 							<img src="/logo.svg" height={40} width={56} alt="" />
 						</Link>
 					</div>
-					<nav className="flex gap-4 flex-1 justify-center">
+					<nav className="flex flex-1 justify-center gap-4">
 						<NavLink icon="ChartHistogramIcon" to={"/"}>
 							Dashboard
 						</NavLink>

@@ -4,8 +4,8 @@ import { Select } from "../../../components/select";
 
 export function Filters() {
 	return (
-		<aside className="bg-white rounded-[20px] p-6 flex flex-col gap-6">
-			<h3 className="title-sm text-gray-300">Filters</h3>
+		<aside className="flex flex-col gap-6 bg-white p-6 rounded-[20px]">
+			<h3 className="text-gray-300 title-sm">Filters</h3>
 
 			<form className="flex flex-col gap-4">
 				<Input

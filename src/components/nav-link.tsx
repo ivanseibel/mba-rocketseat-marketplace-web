@@ -13,7 +13,7 @@ export function NavLink({ children, ...props }: NavLinkProps) {
 	return (
 		<Link
 			data-current={pathname === props.to}
-			className="body-sm px-4 h-10 flex rounded-[10px] items-center gap-1.5 text-gray-300 hover:text-orange-base data-[current=true]:bg-shape data-[current=true]:font-medium data-[current=true]:text-orange-base"
+			className="flex items-center gap-1.5 data-[current=true]:bg-shape px-4 rounded-[10px] h-10 data-[current=true]:font-medium text-gray-300 data-[current=true]:text-orange-base hover:text-orange-base body-sm"
 			{...props}
 		>
 			<IconComponent size={20} strokeWidth={2} />

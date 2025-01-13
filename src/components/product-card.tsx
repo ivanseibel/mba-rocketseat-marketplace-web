@@ -23,30 +23,30 @@ export function ProductCard({
 }: ProductCardProps) {
 	return (
 		<Link to={`/product/${id}`} className="block">
-			<div className="max-w-sm max-h-60 transition-all duration-200 p-1 rounded-[20px] border-2 border-white bg-white hover:border-2 hover:border-blue-base">
+			<div className="border-2 border-white hover:border-2 bg-white p-1 hover:border-blue-base rounded-[20px] max-w-sm max-h-60 transition-all duration-200">
 				<div className="relative">
 					<img
-						className="w-full rounded-[20px] h-32 object-cover"
+						className="rounded-[20px] w-full h-32 object-cover"
 						src={imageUrl}
 						alt={title}
 					/>
-					<div className="absolute flex gap-2 top-0 right-0 mr-2 mt-2">
+					<div className="top-0 right-0 absolute flex gap-2 mt-2 mr-2">
 						<StatusTag variant={status} />
 						<CategoryTag label={category} />
 					</div>
 				</div>
 				<div className="p-3">
 					<div className="flex justify-between items-center">
-						<h3 className="subtitle text-gray-400">{title}</h3>
+						<h3 className="text-gray-400 subtitle">{title}</h3>
 						<div className="flex items-baseline gap-1">
-							<span className="label-md text-gray-500">$</span>
-							<p className="font-dm-sans text-lg font-bold text-gray-500">
+							<span className="text-gray-500 label-md">$</span>
+							<p className="font-bold font-dm-sans text-gray-500 text-lg">
 								{price.toFixed(2)}
 							</p>
 						</div>
 					</div>
 					<div>
-						<p className="body-sm text-gray-300 overflow-hidden text-pretty line-clamp-2">
+						<p className="line-clamp-2 text-gray-300 text-pretty overflow-hidden body-sm">
 							{description}
 						</p>
 					</div>

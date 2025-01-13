@@ -105,7 +105,7 @@ export function Select({
 						<button
 							type="button"
 							onClick={handleClear}
-							className="absolute leading-none right-9 top-1/2 px-1 bg-shape rounded-full transform -translate-y-1/2 text-gray-300 hover:text-gray-500"
+							className="top-1/2 right-9 absolute bg-shape px-1 rounded-full text-gray-300 hover:text-gray-500 leading-none transform -translate-y-1/2"
 							aria-label="Clear selection"
 						>
 							<HugeIcons.Cancel01Icon width={16} />
@@ -114,12 +114,12 @@ export function Select({
 
 					{/* Dropdown content with options */}
 					<SelectPrimitive.Content>
-						<SelectPrimitive.Viewport className="bg-white rounded-lg py-2 shadow-lg items-start flex flex-col w-full">
+						<SelectPrimitive.Viewport className="flex flex-col items-start bg-white shadow-lg py-2 rounded-lg w-full">
 							{options.map((option) => (
 								<SelectPrimitive.Item
 									key={option.value}
 									value={option.value}
-									className="cursor-pointer px-4 h-12 justify-between hover:text-orange-dark flex items-center w-full data-[state=checked]:text-orange-base"
+									className="flex justify-between items-center px-4 w-full h-12 data-[state=checked]:text-orange-base hover:text-orange-dark cursor-pointer"
 								>
 									{/* Display option label */}
 									<SelectPrimitive.ItemText>
@@ -139,8 +139,8 @@ export function Select({
 
 			{/* Error message display */}
 			{error && (
-				<div className="flex items-center mt-2 body-xs text-danger">
-					<HugeIcons.AlertCircleIcon className="w-4 h-4 mr-1" />
+				<div className="flex items-center mt-2 text-danger body-xs">
+					<HugeIcons.AlertCircleIcon className="mr-1 w-4 h-4" />
 					{error}
 				</div>
 			)}

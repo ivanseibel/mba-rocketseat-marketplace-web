@@ -50,15 +50,15 @@ const chartData = [
 
 export function VisitorsChart() {
 	return (
-		<div className="flex flex-col gap-4 w-full p-6">
-			<div className="flex flex-row items-center justify-between">
+		<div className="flex flex-col gap-4 p-6 w-full">
+			<div className="flex flex-row justify-between items-center">
 				<div className="space-y-1">
 					<h2 className="font-medium title-sm">Visitors</h2>
 				</div>
 
 				<div className="flex items-center gap-2">
 					<Calendar04Icon size={16} />
-					<span className="label-sm text-gray-300">26th June - 25th July</span>
+					<span className="text-gray-300 label-sm">26th June - 25th July</span>
 				</div>
 			</div>
 			<div className="border">
@@ -82,10 +82,10 @@ export function VisitorsChart() {
 						</LineChart>
 					</ResponsiveContainer>
 				) : (
-					<div className="flex h-[240px] w-full items-center justify-center">
+					<div className="flex justify-center items-center w-full h-[240px]">
 						<Loading01Icon
 							size={40}
-							className="h-8 w-8 animate-spin text-muted-foreground"
+							className="w-8 h-8 text-muted-foreground animate-spin"
 						/>
 					</div>
 				)}
@@ -103,7 +103,7 @@ function CustomTooltip({
 }: TooltipProps<number, string>) {
 	if (active) {
 		return (
-			<div className="flex flex-col gap-2 p-3 bg-white rounded-lg shadow-md">
+			<div className="flex flex-col gap-2 bg-white shadow-md p-3 rounded-lg">
 				<p className="label-sm">{label}th July</p>
 				<div className="flex items-center gap-2">
 					<UserMultipleIcon size={16} />

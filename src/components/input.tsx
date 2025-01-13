@@ -136,8 +136,8 @@ export function Input({
 				)}
 			</div>
 			{error && (
-				<div className="flex items-center mt-2 body-xs text-danger">
-					<HugeIcons.AlertCircleIcon className="w-4 h-4 mr-1" />
+				<div className="flex items-center mt-2 text-danger body-xs">
+					<HugeIcons.AlertCircleIcon className="mr-1 w-4 h-4" />
 					{error}
 				</div>
 			)}

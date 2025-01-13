@@ -9,7 +9,7 @@ export function User() {
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger asChild className="inline-flex items-center">
 					<button type="button">
-						<Avatar.Root className="w-12 h-w-12 rounded-xl overflow-hidden bg-shape flex items-center justify-center cursor-pointer">
+						<Avatar.Root className="flex justify-center items-center bg-shape rounded-xl h-w-12 w-12 cursor-pointer overflow-hidden">
 							<Avatar.Image
 								src="https://github.com/ivanseibel.png"
 								alt="John Doe"
@@ -19,27 +19,27 @@ export function User() {
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Portal>
 					<DropdownMenu.Content
-						className="rounded-xl p-4 w-[168px] bg-white border"
+						className="bg-white p-4 border rounded-xl w-[168px]"
 						align="end"
 						side="bottom"
 						sideOffset={15}
 					>
 						<div className="flex flex-col gap-4">
-							<div className="flex items-center justify-between gap-3">
-								<Avatar.Root className="w-8 h-8 flex overflow-hidden align-center justify-center rounded-lg">
+							<div className="flex justify-between items-center gap-3">
+								<Avatar.Root className="flex justify-center rounded-lg w-8 h-8 overflow-hidden align-center">
 									<Avatar.Image
 										src="https://github.com/ivanseibel.png"
 										alt="John Doe"
 										className="object-cover"
 									/>
 								</Avatar.Root>
-								<p className="body-xs text-gray-300 text-pretty flex-1">
+								<p className="flex-1 text-gray-300 text-pretty body-xs">
 									Ivan Luis Seibel
 								</p>
 							</div>
 
 							<Separator.Root
-								className="w-full bg-shape h-[1px]"
+								className="bg-shape w-full h-[1px]"
 								orientation="horizontal"
 							/>
 
@@ -47,7 +47,7 @@ export function User() {
 								<DropdownMenu.Item asChild>
 									<button
 										type="button"
-										className="flex w-full items-center justify-between text-sm font-medium text-orange-base hover:text-orange-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-base focus:ring-opacity-50"
+										className="flex justify-between items-center focus:ring-opacity-50 focus:ring-2 focus:ring-orange-base w-full font-medium text-orange-base text-sm hover:text-orange-dark transition-colors duration-200 focus:outline-none"
 									>
 										Sign out
 										<Logout01Icon width={20} strokeWidth={1.5} />

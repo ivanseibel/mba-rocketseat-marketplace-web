@@ -85,12 +85,12 @@ export function Products() {
 					<h1 className="title-md">Your products</h1>
 					<p className="body-sm">Explore and manage your products here</p>
 				</section>
-				<section className="grid grid-cols-3 gap-4">
-					<aside className="col-span-1 items-start self-start">
+				<section className="gap-4 grid grid-cols-3">
+					<aside className="items-start col-span-1 self-start">
 						<Filters />
 					</aside>
-					<div className="col-span-2 items-start">
-						<div className="grid grid-cols-2 gap-4">
+					<div className="items-start col-span-2">
+						<div className="gap-4 grid grid-cols-2">
 							{productData.map((product) => (
 								<ProductCard
 									id={product.id}
