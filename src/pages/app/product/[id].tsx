@@ -14,13 +14,31 @@ export function ProductForm() {
 				<title>{operation} product</title>
 			</Helmet>
 			<div className="flex flex-col gap-10 px-32 p-4">
-				<section className="flex flex-col gap-2">
-					<h1 className="title-md">{operation} product</h1>
-					<p className="body-sm">
-						{operation} a product here by filling out the form below. Please
-						provide all the necessary details to ensure the product is
-						accurately represented.
-					</p>
+				<section className="flex gap-2">
+					<div className="flex flex-col gap-2 w-full">
+						<h1 className="title-md">{operation} product</h1>
+						<div className="flex justify-between gap-4 w-full">
+							<p className="body-sm">
+								{operation} a product here by filling out the form below.
+							</p>
+							<div className="flex gap-4 w-[380px]">
+								<Button
+									label="Set as sold"
+									variant="link"
+									size="sm"
+									onClick={() => {}}
+									icon="Tick02Icon"
+								/>
+								<Button
+									label="Deactivate product"
+									variant="link"
+									size="sm"
+									onClick={() => {}}
+									icon="UnavailableIcon"
+								/>
+							</div>
+						</div>
+					</div>
 				</section>
 				<section className="flex gap-4">
 					<aside className="flex items-start self-start">
