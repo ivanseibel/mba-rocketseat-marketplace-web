@@ -1,10 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button";
 import { Input } from "../../components/input";
 
 export function SignIn() {
+	const navigate = useNavigate();
+
+	function handleSignUp() {
+		navigate("/sign-up");
+	}
+
 	return (
 		<div className="flex flex-col gap-32 w-full">
-			<form className="flex flex-col gap-12 w-full max-w-">
+			<form className="flex flex-col gap-12 w-full">
 				<div className="flex flex-col gap-2">
 					<h1 className="text-gray-500 title-md">Sign in</h1>
 					<p className="text-gray-300 text-sm">
@@ -42,7 +49,7 @@ export function SignIn() {
 				<p>Don't have an account? </p>
 				<Button
 					label="Sign up"
-					onClick={() => {}}
+					onClick={handleSignUp}
 					size="md"
 					variant="outline"
 				/>
