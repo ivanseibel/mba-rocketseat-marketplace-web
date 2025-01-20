@@ -64,7 +64,6 @@ export function ProductForm() {
 								type="number"
 								label="Price"
 								placeholder="0.00"
-								icon="Dollar01Icon"
 							/>
 						</div>
 						<Input
