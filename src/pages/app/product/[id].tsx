@@ -4,6 +4,7 @@ import { Button } from "../../../components/button";
 import { Input } from "../../../components/input";
 import { ProductImageUpload } from "../../../components/product-image-upload";
 import { Select } from "../../../components/select";
+import { cn } from "../../../lib/utils";
 
 export function ProductForm() {
 	const params = useParams<{ id: string }>();
@@ -21,7 +22,12 @@ export function ProductForm() {
 							<p className="body-sm">
 								{operation} a product here by filling out the form below.
 							</p>
-							<div className="flex gap-4 w-[380px]">
+							<div
+								className={cn(
+									"flex gap-4 w-[380px]",
+									operation === "Create" && "hidden",
+								)}
+							>
 								<Button
 									label="Set as sold"
 									variant="link"
