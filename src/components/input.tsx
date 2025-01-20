@@ -8,7 +8,7 @@ interface InputProps {
 	label?: string;
 	placeholder?: string;
 	id: string;
-	type: "text" | "password" | "number" | "email";
+	type: "text" | "password" | "number" | "email" | "tel";
 	icon?: keyof typeof HugeIcons;
 	error?: string;
 }
@@ -64,7 +64,7 @@ export function Input({
 					</div>
 				)}
 
-				{["text", "email"].includes(type) && (
+				{["text", "email", "tel"].includes(type) && (
 					<input
 						placeholder={placeholder}
 						type={type}
