@@ -77,7 +77,7 @@ export function SignUp() {
 			<div className="flex flex-col gap-2">
 				<p>Already have an account? </p>
 				<Button
-					label="Sign up"
+					label="Sign in"
 					onClick={handleSignIn}
 					size="md"
 					variant="outline"
