@@ -1,7 +1,10 @@
+import { isAxiosError } from "axios";
+import { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
 import { NavLink } from "../components/nav-link";
 import { User } from "../components/user";
+import api from "../lib/axios";
 
 export function AppLayout() {
 	const navigate = useNavigate();
@@ -9,6 +12,29 @@ export function AppLayout() {
 	function handleNewProduct() {
 		navigate("/product/create");
 	}
+
+	useEffect(() => {
+		const interceptorId = api.interceptors.response.use(
+			(response) => response,
+			(error) => {
+				console.error(error);
+				if (isAxiosError(error)) {
+					const status = error.response?.status;
+					const code = error.response?.data?.code;
+
+					if (status === 401 || String(code).toLowerCase() === "unauthorized") {
+						navigate("/sign-in", { replace: true });
+					}
+				}
+
+				return Promise.reject(error);
+			},
+		);
+
+		return () => {
+			api.interceptors.response.eject(interceptorId);
+		};
+	}, [navigate]);
 
 	return (
 		<div className="bg-background min-h-screen">
