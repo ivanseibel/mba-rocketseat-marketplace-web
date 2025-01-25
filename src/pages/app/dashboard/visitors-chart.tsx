@@ -14,41 +14,11 @@ import {
 } from "recharts";
 import colors from "tailwindcss/colors";
 
-// Fake data - delete this when you fetch real data
-const chartData = [
-	{ date: "01", visits: 100 },
-	{ date: "02", visits: 120 },
-	{ date: "03", visits: 99 },
-	{ date: "04", visits: 150 },
-	{ date: "05", visits: 130 },
-	{ date: "06", visits: 90 },
-	{ date: "07", visits: 80 },
-	{ date: "08", visits: 100 },
-	{ date: "09", visits: 120 },
-	{ date: "10", visits: 99 },
-	{ date: "11", visits: 150 },
-	{ date: "12", visits: 130 },
-	{ date: "13", visits: 90 },
-	{ date: "14", visits: 80 },
-	{ date: "15", visits: 100 },
-	{ date: "16", visits: 120 },
-	{ date: "17", visits: 99 },
-	{ date: "18", visits: 150 },
-	{ date: "19", visits: 130 },
-	{ date: "20", visits: 90 },
-	{ date: "21", visits: 80 },
-	{ date: "22", visits: 100 },
-	{ date: "23", visits: 120 },
-	{ date: "24", visits: 99 },
-	{ date: "25", visits: 150 },
-	{ date: "26", visits: 130 },
-	{ date: "27", visits: 90 },
-	{ date: "28", visits: 80 },
-	{ date: "29", visits: 100 },
-	{ date: "30", visits: 120 },
-];
+interface VisitorsChartProps {
+  data: { date: string; amount: number }[];
+}
 
-export function VisitorsChart() {
+export function VisitorsChart({ data }: VisitorsChartProps) {
 	return (
 		<div className="flex flex-col gap-4 p-6 w-full">
 			<div className="flex flex-row justify-between items-center">
@@ -62,9 +32,9 @@ export function VisitorsChart() {
 				</div>
 			</div>
 			<div className="border">
-				{chartData ? (
+				 {data.length ? (
 					<ResponsiveContainer width="100%" height={266}>
-						<LineChart data={chartData} style={{ fontSize: 12 }}>
+						<LineChart data={data} style={{ fontSize: 12 }}>
 							<XAxis dataKey="date" axisLine={true} tickLine={false} dy={16} />
 							<YAxis stroke="#888" axisLine={false} tickLine={false} />
 							<CartesianGrid
@@ -75,7 +45,7 @@ export function VisitorsChart() {
 							<Tooltip content={CustomTooltip} />
 							<Line
 								type="monotone"
-								dataKey="visits"
+								dataKey="amount"
 								stroke={colors.violet[500]}
 								dot={false}
 							/>
@@ -95,6 +65,7 @@ export function VisitorsChart() {
 }
 
 import type { TooltipProps } from "recharts";
+import { ViewsPerDayResponse } from "../../../api/views-per-day";
 
 function CustomTooltip({
 	payload,

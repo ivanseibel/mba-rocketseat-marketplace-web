@@ -6,6 +6,7 @@ import { getProductsSold } from "../../../api/products-sold";
 import { getProductsAdvertised } from "../../../api/products-advertised";
 import { getViews } from "../../../api/views";
 import { Skeleton } from "../../../components/skeleton";
+import { getViewsPerDay } from "../../../api/views-per-day";
 
 export function Dashboard() {
 	const {data: productsSold, isFetching} = useQuery({
@@ -21,6 +22,11 @@ export function Dashboard() {
 	const {data: views} = useQuery({
 		queryKey: ["metrics", "views"],
 		queryFn: getViews
+	});
+
+	const {data: viewsPerDay} = useQuery({
+		queryKey: ["metrics", "views-per-day"],
+		queryFn: getViewsPerDay
 	});
 
 	return (
@@ -82,7 +88,7 @@ export function Dashboard() {
 						</div>
 					</div>
 					<div className="flex flex-1 bg-white border rounded-[20px]">
-						<VisitorsChart />
+						<VisitorsChart data={viewsPerDay?.data.viewsPerDay || []} />
 					</div>
 				</section>
 			</div>
