@@ -1,8 +1,16 @@
 import { SaleTag02Icon, Store04Icon, UserMultipleIcon } from "hugeicons-react";
 import { Helmet } from "react-helmet-async";
 import { VisitorsChart } from "./visitors-chart";
+import { useQuery } from "@tanstack/react-query";
+import { getProductsSold } from "../../../api/products-sold";
+import { Skeleton } from "../../../components/skeleton";
 
 export function Dashboard() {
+	const {data: productsSold, isFetching} = useQuery({
+		queryKey: ["metrics", "products-sold"],
+		queryFn: getProductsSold
+	});
+
 	return (
 		<>
 			<Helmet>
@@ -20,7 +28,13 @@ export function Dashboard() {
 								<SaleTag02Icon size={40} />
 							</div>
 							<div className="flex flex-col flex-1 gap-2">
-								<h2 className="title-lg">24</h2>
+								<h2 className="title-lg">
+									{isFetching ? (
+										<Skeleton width="w-full" height="h-8" />
+									) : (
+										productsSold?.data.amount
+									)}
+								</h2>
 								<p className="text-pretty body-xs">Products sold</p>
 							</div>
 						</div>
