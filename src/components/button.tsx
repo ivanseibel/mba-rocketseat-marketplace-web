@@ -8,6 +8,8 @@ interface ButtonProps {
 	icon?: keyof typeof HugeIcons;
 	iconPosition?: "left" | "right";
 	onClick?: () => void;
+	disabled?: boolean;
+	type?: "button" | "submit";
 }
 
 export function Button({
@@ -17,6 +19,8 @@ export function Button({
 	icon,
 	iconPosition = "left",
 	onClick,
+	disabled,
+	type = "button",
 }: ButtonProps): JSX.Element {
 	const iconProps =
 		size === "sm" ? { strokeWidth: 2, size: 16 } : { strokeWidth: 2, size: 24 };
@@ -35,10 +39,11 @@ export function Button({
 			? "border border-orange-base text-orange-base bg-white hover:text-orange-dark hover:border-orange-dark"
 			: "",
 		variant === "solid" ? "bg-orange-base text-white hover:bg-orange-dark" : "",
+		disabled ? "opacity-50 cursor-not-allowed" : "",
 	);
 
 	return (
-		<button type="button" className={buttonClasses} onClick={onClick}>
+		<button type={type} className={buttonClasses} onClick={onClick}>
 			{icon && iconPosition === "left" && (
 				<span className="mr-2">
 					{IconComponent && <IconComponent {...iconProps} />}
