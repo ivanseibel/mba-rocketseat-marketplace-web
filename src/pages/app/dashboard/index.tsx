@@ -3,12 +3,18 @@ import { Helmet } from "react-helmet-async";
 import { VisitorsChart } from "./visitors-chart";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsSold } from "../../../api/products-sold";
+import { getProductsAdvertised } from "../../../api/products-advertised";
 import { Skeleton } from "../../../components/skeleton";
 
 export function Dashboard() {
 	const {data: productsSold, isFetching} = useQuery({
 		queryKey: ["metrics", "products-sold"],
 		queryFn: getProductsSold
+	});
+
+	const {data: productsAdvertised} = useQuery({
+		queryKey: ["metrics", "products-advertised"],
+		queryFn: getProductsAdvertised
 	});
 
 	return (
@@ -43,7 +49,13 @@ export function Dashboard() {
 								<Store04Icon size={40} />
 							</div>
 							<div className="flex flex-col flex-1 gap-2">
-								<h2 className="title-lg">56</h2>
+								<h2 className="title-lg">
+									{isFetching ? (
+										<Skeleton width="w-full" height="h-8" />
+									) : (
+										productsAdvertised?.data.amount
+									)}
+								</h2>
 								<p className="text-pretty body-xs">Products advertised</p>
 							</div>
 						</div>
