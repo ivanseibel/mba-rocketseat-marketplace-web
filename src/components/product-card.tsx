@@ -8,7 +8,7 @@ export interface ProductCardProps {
 	title: string;
 	description: string;
 	price: number;
-	status: "published" | "sold" | "inactive";
+	status: "available" | "sold" | "cancelled";
 	category: string;
 }
 
