@@ -4,7 +4,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Button } from "../components/button";
 import { NavLink } from "../components/nav-link";
 import { User } from "../components/user";
-import api from "../lib/axios";
+import {api} from "../lib/axios";
 
 export function AppLayout() {
 	const navigate = useNavigate();
