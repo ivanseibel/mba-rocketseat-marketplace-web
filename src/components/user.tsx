@@ -2,8 +2,18 @@ import * as Avatar from "@radix-ui/react-avatar";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Separator from "@radix-ui/react-separator";
 import { Logout01Icon } from "hugeicons-react";
+import { useMutation } from "@tanstack/react-query";
+import { signOut } from "../api/sign-out";
 
 export function User() {
+	const { mutateAsync } = useMutation({
+		mutationFn: () => signOut(),
+	});
+
+	function handleSignOut() {
+		mutateAsync();
+	}
+
 	return (
 		<div className="flex">
 			<DropdownMenu.Root>
@@ -47,6 +57,7 @@ export function User() {
 								<DropdownMenu.Item asChild>
 									<button
 										type="button"
+										onClick={handleSignOut}
 										className="flex justify-between items-center focus:ring-opacity-50 focus:ring-2 focus:ring-orange-base w-full font-medium text-orange-base text-sm hover:text-orange-dark transition-colors duration-200 focus:outline-none"
 									>
 										Sign out
