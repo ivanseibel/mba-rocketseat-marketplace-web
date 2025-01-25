@@ -4,6 +4,7 @@ import { VisitorsChart } from "./visitors-chart";
 import { useQuery } from "@tanstack/react-query";
 import { getProductsSold } from "../../../api/products-sold";
 import { getProductsAdvertised } from "../../../api/products-advertised";
+import { getViews } from "../../../api/views";
 import { Skeleton } from "../../../components/skeleton";
 
 export function Dashboard() {
@@ -15,6 +16,11 @@ export function Dashboard() {
 	const {data: productsAdvertised} = useQuery({
 		queryKey: ["metrics", "products-advertised"],
 		queryFn: getProductsAdvertised
+	});
+
+	const {data: views} = useQuery({
+		queryKey: ["metrics", "views"],
+		queryFn: getViews
 	});
 
 	return (
@@ -64,7 +70,13 @@ export function Dashboard() {
 								<UserMultipleIcon size={40} />
 							</div>
 							<div className="flex flex-col flex-1 gap-2">
-								<h2 className="title-lg">1.238</h2>
+								<h2 className="title-lg">
+									{isFetching ? (
+										<Skeleton width="w-full" height="h-8" />
+									) : (
+										views?.data.amount
+									)}
+								</h2>
 								<p className="text-pretty body-xs">Total visitors</p>
 							</div>
 						</div>
