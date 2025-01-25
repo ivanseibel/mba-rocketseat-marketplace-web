@@ -11,6 +11,9 @@ interface InputProps {
 	type: "text" | "password" | "number" | "email" | "tel";
 	icon?: keyof typeof HugeIcons;
 	error?: string;
+	value?: string;
+	onChange?: (value: string) => void;
+	onBlur?: () => void;
 }
 
 export function Input({
@@ -20,6 +23,9 @@ export function Input({
 	type,
 	icon,
 	error,
+	value = "",
+	onChange,
+	onBlur,
 }: InputProps): JSX.Element {
 	const [showPassword, setShowPassword] = useState(false);
 	const [isFocused, setIsFocused] = useState(false);
@@ -34,8 +40,14 @@ export function Input({
 	};
 
 	const handleBlur = () => {
-		setIsFocused(false);
-	};
+    setIsFocused(false);
+    onBlur?.(); // Call the provided onBlur handler
+  };
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setIsFilled(e.target.value.length > 0);
+		onChange?.(e.target.value); // Update the form value
+	}
 
 	const IconComponent = icon ? (HugeIcons[icon] as React.ElementType) : null;
 
@@ -69,13 +81,13 @@ export function Input({
 						placeholder={placeholder}
 						type={type}
 						id={id}
+						onChange={handleChange}
 						className={cn(
 							"w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200",
 							icon && "pl-10",
 						)}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
-						onChange={(e) => setIsFilled(e.target.value.length > 0)}
 					/>
 				)}
 
@@ -85,6 +97,8 @@ export function Input({
 							placeholder={placeholder}
 							type={showPassword ? "text" : type}
 							id={id}
+							value={value}
+							onChange={handleChange}
 							className={cn(
 								"w-full px-3 py-2 border-b border-gray-100 focus:outline-none focus:border-gray-400 text-gray-400 body-md placeholder-gray-200",
 								icon && "pl-10",
@@ -92,7 +106,6 @@ export function Input({
 							)}
 							onFocus={handleFocus}
 							onBlur={handleBlur}
-							onChange={(e) => setIsFilled(e.target.value.length > 0)}
 						/>
 						{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
 						<div
@@ -121,7 +134,7 @@ export function Input({
 						)}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
-						onChange={(e) => setIsFilled(e.target.value.length > 0)}
+						value={value}
 						allowNegative={false}
 						prefix="$ "
 						decimalScale={2}
