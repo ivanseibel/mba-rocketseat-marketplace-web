@@ -1,22 +1,19 @@
-import { Helmet } from "react-helmet-async";
-import {
-	ProductCard,
-} from "../../../components/product-card";
-import { Filters } from "./filters";
-import { getSellerProducts } from "../../../api/seller-products";
 import { useQuery } from "@tanstack/react-query";
 import { Loading01Icon } from "hugeicons-react";
+import { Helmet } from "react-helmet-async";
+import { getSellerProducts } from "../../../api/seller-products";
+import { ProductCard } from "../../../components/product-card";
+import { Filters } from "./filters";
 
-export function Products(
-) {
-	const {data:productsData, isFetching} = useQuery({
+export function Products() {
+	const { data: productsData, isFetching } = useQuery({
 		queryKey: ["products", "seller"],
-		queryFn: getSellerProducts
+		queryFn: getSellerProducts,
 	});
 
 	if (isFetching) {
 		return (
-			<div className="flex justify-center items-center w-full h-[240px]">
+			<div className="flex justify-center items-center w-full h-screen">
 				<Loading01Icon
 					size={40}
 					className="w-8 h-8 text-muted-foreground animate-spin"
