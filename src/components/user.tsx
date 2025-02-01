@@ -1,17 +1,20 @@
 import * as Avatar from "@radix-ui/react-avatar";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Separator from "@radix-ui/react-separator";
-import { Logout01Icon } from "hugeicons-react";
 import { useMutation } from "@tanstack/react-query";
+import { Logout01Icon } from "hugeicons-react";
+import { useNavigate } from "react-router-dom";
 import { signOut } from "../api/sign-out";
 
 export function User() {
 	const { mutateAsync } = useMutation({
 		mutationFn: () => signOut(),
 	});
+	const navigate = useNavigate();
 
-	function handleSignOut() {
-		mutateAsync();
+	async function handleSignOut() {
+		await mutateAsync();
+		navigate("/sign-in");
 	}
 
 	return (
