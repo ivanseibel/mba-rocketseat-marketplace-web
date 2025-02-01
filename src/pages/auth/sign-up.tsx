@@ -1,14 +1,60 @@
 import * as Separator from "@radix-ui/react-separator";
+import { useMutation } from "@tanstack/react-query";
+import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import { z } from "zod";
+import { signUp } from "../../api/sign-up";
 import { AvatarUpload } from "../../components/avatar-upload";
 import { Button } from "../../components/button";
 import { Input } from "../../components/input";
+
+const signUpSchema = z.object({
+	name: z.string(),
+	phone: z.string(),
+	email: z.string().email(),
+	password: z.string().min(8),
+	passwordConfirmation: z.string().min(8),
+	avatarId: z.string(),
+});
+
+export type SignUpPayload = z.infer<typeof signUpSchema>;
 
 export function SignUp() {
 	const navigate = useNavigate();
 
 	function handleSignIn() {
 		navigate("/sign-in");
+	}
+
+	const {
+		control,
+		handleSubmit,
+		formState: { errors, isSubmitting },
+		reset,
+	} = useForm<SignUpPayload>();
+
+	const { mutateAsync } = useMutation({
+		mutationFn: signUp,
+	});
+
+	async function handleSignUp(data: SignUpPayload) {
+		try {
+			await mutateAsync({
+				avatarId: data.avatarId,
+				email: data.email,
+				name: data.name,
+				password: data.password,
+				passwordConfirmation: data.passwordConfirmation,
+				phone: data.phone,
+			});
+
+			toast.success("Account created successfully!");
+			reset();
+		} catch (error) {
+			console.error("Error during sign-up", error);
+			toast.error("An error occurred while creating your account.");
+		}
 	}
 
 	return (
@@ -28,46 +74,89 @@ export function SignUp() {
 							className="bg-transparent w-full h-2"
 							orientation="horizontal"
 						/>
-						<Input
-							id="name"
-							type="text"
-							error=""
-							icon="UserIcon"
-							label="Name"
-							placeholder="Type your name"
+						<Controller
+							name="name"
+							control={control}
+							render={({ field }) => (
+								<Input
+									id="name"
+									type="text"
+									error={errors.name?.message}
+									icon="UserIcon"
+									label="Name"
+									placeholder="Type your name"
+									{...field}
+								/>
+							)}
 						/>
-						<Input
-							id="phone"
-							type="tel"
-							error=""
-							icon="CallIcon"
-							label="Phone"
-							placeholder="Type your phone"
+						<Controller
+							name="phone"
+							control={control}
+							render={({ field }) => (
+								<Input
+									id="phone"
+									type="tel"
+									error={errors.phone?.message}
+									icon="CallIcon"
+									label="Phone"
+									placeholder="Type your phone"
+									{...field}
+								/>
+							)}
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
 						<h3>Access</h3>
-						<Input
-							id="email"
-							type="email"
-							error=""
-							icon="Mail01Icon"
-							label="E-Mail"
-							placeholder="Type your e-mail"
+						<Controller
+							name="email"
+							control={control}
+							render={({ field }) => (
+								<Input
+									id="email"
+									type="email"
+									error={errors.email?.message}
+									icon="Mail01Icon"
+									label="E-Mail"
+									placeholder="Type your e-mail"
+									{...field}
+								/>
+							)}
 						/>
-						<Input
-							id="password"
-							type="password"
-							error=""
-							icon="LockIcon"
-							label="Password"
-							placeholder="Type your password"
+						<Controller
+							name="password"
+							control={control}
+							render={({ field }) => (
+								<Input
+									id="password"
+									type="password"
+									error={errors.password?.message}
+									icon="LockIcon"
+									label="Password"
+									placeholder="Type your password"
+									{...field}
+								/>
+							)}
+						/>
+						<Controller
+							name="passwordConfirmation"
+							control={control}
+							render={({ field }) => (
+								<Input
+									id="passwordConfirmation"
+									type="password"
+									error={errors.passwordConfirmation?.message}
+									icon="LockIcon"
+									label="Password Confirmation"
+									placeholder="Confirm your password"
+									{...field}
+								/>
+							)}
 						/>
 					</div>
 				</div>
 				<Button
 					label="Sign in"
-					onClick={() => {}}
+					onClick={handleSubmit(handleSignUp)}
 					size="md"
 					variant="solid"
 					icon="ArrowRight02Icon"
@@ -81,6 +170,7 @@ export function SignUp() {
 					onClick={handleSignIn}
 					size="md"
 					variant="outline"
+					disabled={isSubmitting}
 				/>
 			</div>
 		</div>
